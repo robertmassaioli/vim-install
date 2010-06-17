@@ -1,0 +1,22 @@
+#!/bin/bash
+
+usage_msg="Usage: $0 file.vba"
+
+if [ $# -ne 1 ]; then
+  echo "${usage_msg}"
+  exit 1
+fi
+
+# if [ -r "$1" ]; then
+  # echo "Error: The file $1 is not readable."
+  # exit 2
+# fi
+
+file_ext=`basename "$1" | sed 's/^[^\.]*\.//g'`
+if [ "$file_ext" != "vba" ]; then
+  echo "Error: Expected .vba extension and got .$file_ext instead."
+  echo "${usage_msg}"
+  exit 3
+fi
+
+vim -c 'so % | q' "$1"
