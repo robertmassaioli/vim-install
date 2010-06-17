@@ -1,6 +1,7 @@
 #!/bin/bash
 
-usage_msg="Usage: $0 file.vba"
+mybasename=`basename $0`
+usage_msg="Usage: $mybasename file.vba"
 
 if [ $# -ne 1 ]; then
   echo "${usage_msg}"
